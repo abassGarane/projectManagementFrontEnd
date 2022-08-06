@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Navigation from './components/Navigation'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import { Button, Container, Row, Col, Modal } from 'react-bootstrap'
+import Clients from './components/Clients'
+import CreateClient from './components/CreateClient'
 
-function App() {
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        clients: {
+          merge(existing, incoming) {
+            return incoming
+          },
+        },
+        projects: {
+          merge(existing, incoming) {
+            return incoming
+          },
+        },
+      },
+    },
+  },
+})
+
+const Client = new ApolloClient({
+  uri: 'http://localhost:8080/graphql',
+  cache,
+})
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <ApolloProvider client={Client}>
+        <Navigation />
+
+        <Container>
+          <CreateClient />
+          <Clients />
+        </Container>
+      </ApolloProvider>
+    </>
+  )
 }
 
-export default App;
+export default App
