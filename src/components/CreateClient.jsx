@@ -15,6 +15,8 @@ const CreateClient = () => {
   //shared by modal and alert
   const handleClose = () => {
     setShow(false)
+  }
+  const handleAlertClose = () => {
     setAlertShow(true)
   }
 
@@ -39,6 +41,10 @@ const CreateClient = () => {
     //     })
     //   },
   })
+  const handleClick = () => {
+    handleClose()
+    handleAlertClose()
+  }
   const handleSubmit = (e) => {
     // stuff happens here
     e.preventDefault()
@@ -66,8 +72,10 @@ const CreateClient = () => {
 
         {/* <Button onClick={() => setShow(true)}></Button>/ */}
       </Col>
-      <Col xs={6} className='container mr-10 mb-5'>
-        <Button onClick={handleShow}>Create Client</Button>
+      <Col xs={6} className='container mt-6 mr-10 mb-5'>
+        <Button onClick={handleShow} className='mt-5'>
+          Create Client
+        </Button>
       </Col>
       <Col xs={12}>
         <Modal show={show} onHide={handleClose} centered>
@@ -107,7 +115,7 @@ const CreateClient = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </Form.Group>
-              <Button variant='primary' type='submit' onClick={handleClose}>
+              <Button variant='primary' type='submit' onClick={handleClick}>
                 Create
               </Button>
             </Form>
