@@ -1,5 +1,6 @@
 import { Badge } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
+import { Link } from 'react-router-dom'
 
 function Project({ project }) {
   //   console.log(project.client)
@@ -20,11 +21,11 @@ function Project({ project }) {
         {/* {/* <Card.Link href='#'>Card Link</Card.Link> */}
       </Card.Body>
       <Card.Footer>
-        <Card.Link
-          href={project.client ? `/projects/${project.id}` : '/'}
+        <Link
+          to={project.client ? `/projects/${project.id}` : '/'}
           className='text-decoration-none'>
           View
-        </Card.Link>
+        </Link>
       </Card.Footer>
     </Card>
   )
