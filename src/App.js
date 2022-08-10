@@ -6,6 +6,9 @@ import { Client } from './apollo/setup'
 import Home from './pages/Home'
 import ProjectView from './pages/ProjectView'
 import NotFound from './pages/NotFound'
+import Projects from './components/Projects'
+import CreateProject from './components/CreateProject'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -14,10 +17,13 @@ const App = () => {
         <Router>
           <Navigation />
           <Routes>
+            <Route path='/projects/new' element={<CreateProject />} />
+            <Route path='/projects/:id/' element={<ProjectView />} />
+            <Route path='/projects' element={<Projects />} />
             <Route path='/' element={<Home />} />
-            <Route path='/projects/:id' element={<ProjectView />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
+          <Footer />
         </Router>
       </ApolloProvider>
     </>

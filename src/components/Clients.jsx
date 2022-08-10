@@ -20,7 +20,7 @@ const Clients = () => {
     <>
       <h2>Clients</h2>
       {!loading && !error && (
-        <Table striped bordered>
+        <Table striped bordered className='mb-6'>
           <thead>
             <tr>
               <th>Name</th>

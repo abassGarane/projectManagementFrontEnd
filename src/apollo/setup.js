@@ -1,4 +1,4 @@
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 const cache = new InMemoryCache({
   typePolicies: {
     Query: {

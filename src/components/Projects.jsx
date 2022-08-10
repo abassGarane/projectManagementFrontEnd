@@ -12,7 +12,7 @@ const Projects = () => {
     return (
       <>
         {data.projects.length > 0 ? (
-          <Row className=''>
+          <Row className='m-5'>
             <h2>Projects</h2>
             {data.projects.map((project) => (
               <Col md={6} key={project.id}>

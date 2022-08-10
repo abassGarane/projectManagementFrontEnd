@@ -4,6 +4,7 @@ import { Badge, Button, Card, Container, Spinner } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import { GET_PROJECT } from '../apollo/queries/project.queries'
 import { GoArrowLeft } from 'react-icons/go'
+import ClientInfo from '../components/ClientInfo'
 const ProjectView = () => {
   let params = useParams()
   const { loading, error, data } = useQuery(GET_PROJECT, {
@@ -18,8 +19,7 @@ const ProjectView = () => {
   if (!loading && !error) {
     return (
       <Container>
-        <Link to='/' className='btn btn-primary'>
-          <GoArrowLeft className='mr-4' style={{ fontSize: '2rem' }} />
+        <Link to='/' className='btn-primary text-decoration-none'>
           Home
         </Link>
         <Card className='mt-5'>
@@ -38,14 +38,7 @@ const ProjectView = () => {
               </small>
             </Card.Title>
             <Card.Text>{data.project.description}</Card.Text>
-            <Card.Text as='h4'>Client Details</Card.Text>
-            <h6>Client Name: {data.project.client.name}</h6>
-            <p>
-              Email :<i>{data.project.client.email}</i>
-            </p>
-            <p>
-              Phone :<i>{data.project.client.phone}</i>
-            </p>
+            <ClientInfo client={data.project.client} />
           </Card.Body>
         </Card>
       </Container>

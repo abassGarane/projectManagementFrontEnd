@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import CreateClient from './CreateClient'
 function Navigation() {
   return (
     <Navbar bg='light' expand='lg'>
@@ -12,11 +13,11 @@ function Navigation() {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='me-auto'>
             <Nav.Link href='/'>Home</Nav.Link>
-            <Nav.Link href='/all'>Projects</Nav.Link>
+            <Nav.Link href='/projects'>Projects</Nav.Link>
             <NavDropdown title='Actions' id='basic-nav-dropdown'>
               <NavDropdown.Item href='/clients'>Add a Client</NavDropdown.Item>
-              <NavDropdown.Item href='/projects'>
-                Create a project
+              <NavDropdown.Item href='/projects/new'>
+                Create Project
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
